@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Element</title>
+  </head>
+  <body style="background-color: #212121; color: #f1f1f1">
+    <div class="parent">
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+  </body>
+  <script>
+    const div = document.createElement("div"); //create a div element but not shows on page only stores in memory
+    // console.log(div);//shows empty div tag
+
+    //Before add element to the page we should add the properties in it (good practice)
+    div.className = "main "; //add class
+    // console.log(div);
+    // div.className = "pr "; //overwites old class same for id also
+
+    div.id = "myId"; //add id
+    // console.log(div);
+
+    // div.id = Math.round(Math.random() * 10 + 1); //shows always random id
+    // console.log(div);
+
+    div.setAttribute("title", "generated title"); //add title
+    // console.log(div);
+
+    div.style.backgroundColor = "green"; //adding style
+    // console.log(div);
+    div.style.padding = "12px"; //add style
+
+    // div.innerText = "Friday"; //add content to div but it is not a optimize approach
+    // console.log(div);
+
+    const addText = document.createTextNode("friday"); //create our own node in which we give our content i.e add content (optimize appr)
+    // console.log(addText); //shows the content
+    div.appendChild(addText); //add the created node to our created element i.e add to div
+    // console.log(div);//shows the element with all properties and content
+
+    //Add element to our page
+    document.body.appendChild(div);
+  </script>
+</html>

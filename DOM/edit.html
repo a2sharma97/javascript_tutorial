@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121; color: #f1f1f1">
+    <ul class="language">
+      <li>javaScript</li>
+    </ul>
+  </body>
+  <script>
+    //add element
+    function addLanguage(langName) {
+      //not an optimize fn to append a child it have to traverse all tree
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`; //add text to element
+      //   console.log(li); //shows the element with content
+      document.querySelector(".language").appendChild(li); //add created element to page or body
+    }
+    // addLanguage("python");
+    // addLanguage("C++");
+
+    function addOptiLanguage(langName) {
+      //optimize appr
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(langName)); //create new node with content and add to the created element
+      document.querySelector(".language").appendChild(li); //add created element to page or body
+    }
+    addOptiLanguage("python");
+    addOptiLanguage("C++");
+
+    const secondLang = document.querySelector("li:nth-child(2)"); //selects the second child or reference of selected child
+    //Edit1
+    console.log(secondLang); //shows the second li element
+    secondLang.innerHTML = "Mojo"; //overwrite the content and adds new one
+
+    // Edit2
+    const newLi = document.createElement("li");
+    newLi.textContent = "mojo"; //add content same as innerHTML
+    // console.log(newLi); //shows created element with content
+    secondLang.replaceWith(newLi); //replace with secondLang
+
+    // Edit3
+    const firstLang = document.querySelector("li:first-child"); //reference of first child
+    firstLang.outerHTML = "<li>TypeScript</li>"; //change the content only for body but in memory original will not change
+    console.log(firstLang); //shows the first child
+
+    //Remove
+    const lastLang = document.querySelector("li:last-child");
+    console.log(lastLang); //shows last child element
+    lastLang.remove(); //removes child from the body not from memory
+    console.log(lastLang); //shows the last child
+  </script>
+</html>

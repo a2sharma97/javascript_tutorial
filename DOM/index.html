@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Object Model</title>
+  </head>
+  <body style="background-color: #212121; color: #f1f1f1">
+    <div class="parent">
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+    <script>
+      const parent = document.querySelector(".parent"); //select the parent class tag and store it in a varible
+      //   console.log(parent); //show the parent with it's childrens
+      //   console.log(parent.children);//shows html collection with all it's children
+
+      for (let i = 0; i < parent.children.length; i++) {
+        // console.log(parent.children[i]); //show all childrens tags
+        // console.log(parent.children[i].innerHTML); //shows the content of the childerns
+      }
+
+      parent.children[0].style.color = "orange"; //add style to seclected child
+      //   console.log(parent.firstElementChild); //shows the first child
+      //   console.log(parent.lastElementChild); //shows the last child
+
+      const dayOne = document.querySelector(".day"); //select the day class tag and store it in a varible
+      //   console.log(dayOne);
+      //   console.log(dayOne.parentElement); //shows parent element with all its childrens
+      //   console.log(dayOne.nextElementSibling); //shows next child element
+      //   console.log(dayOne.nextSibling); //shows some internal details
+      console.log("NODES: ", parent.childNodes); //shows the nodelist
+    </script>
+  </body>
+</html>
