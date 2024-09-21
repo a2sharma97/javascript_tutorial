@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #414141; color: #fff">
+    <div>
+      <ul id="images">
+        <li id="photoshop">photoshop</li>
+        <li id="japan">japan</li>
+        <li id="river">river</li>
+        <!--using onclick event but it is a worst approach onclick="alert('owl')" -->
+        <li id="owl">owl</li>
+        <li id="prayer">prayer</li>
+        <li><a href="https://google.com" id="google">Google</a></li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // document.getElementById("owl").onclick = function () {//also worst approach
+    //   alert("owl clicked");
+    // };
+    //for events we should always use eventListeners
+    // document
+    //   .getElementById("owl")
+    //   .addEventListener("click", function (e) {}, false); //false is by default
+
+    //event propogation
+    // event bubbling //whien by default false //control moves inside to outside chile to parent
+    /*document.getElementById("images").addEventListener(
+      "click",
+      function (e) {
+        console.log("clicked inside the ul");
+      },
+      false
+    );
+
+    document.getElementById("owl").addEventListener(
+      "click",
+      function (e) {
+        console.log("owl clicked");
+      },
+      false
+    );*/
+
+    //event capturing //opposite to event bubbling //control moves outside to inside parent to child
+
+    /*document.getElementById("images").addEventListener(
+      "click",
+      function (e) {
+        console.log("clicked inside the ul");
+      },
+      true
+    );
+
+    document.getElementById("owl").addEventListener(
+      "click",
+      function (e) {
+        console.log("owl clicked");
+        e.stopPropagation(); // stop the control to move forward
+      },
+      true
+    );*/
+
+    document.getElementById("google").addEventListener(
+      "click",
+      function (e) {
+        e.preventDefault(); //stops to request to go to server, use locally
+        console.log("google clicked");
+      },
+      false
+    );
+    //remove all li
+    /*document.querySelector("#images").addEventListener("click", function (e) {
+      console.log(e.target.parentNode);
+      let removeIt = e.target.parentNode;
+      //   console.log(removeIt);//gives the parent node with all its child
+      //   removeIt.remove();//whenever we click any child removes all li
+      removeIt.parentNode.removeChild(removeIt); //sa
+    });*/
+    document.querySelector("#images").addEventListener("click", function (e) {
+      console.log(e.target.tagName);
+      if (e.target.tagName === "LI") {
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode;
+        // console.log(removeIt);
+        removeIt.remove();
+      }
+    });
+  </script>
+</html>
